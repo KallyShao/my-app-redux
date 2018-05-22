@@ -1,14 +1,13 @@
-/*
-* @Author: Administrator
-* @Date:   2018-05-22 22:19:00
-* @Last Modified by:   Administrator
-* @Last Modified time: 2018-05-22 22:58:05
-*/
-
 import React from 'react';
 
-
 class App extends React.Component {
+  // constructor(){
+  //   super();
+  //   this.state = {
+  //     soldiers: ['lily', 'lemon', 'sua']
+  //   }
+  // }
+
   render() {
     return (
       <div>
@@ -16,6 +15,7 @@ class App extends React.Component {
         <A1  name1 = 'kally'/>
         <A2 />
         <A3 name1 = 'kally112'/>
+        
       </div>
     )
   }
@@ -29,12 +29,6 @@ class A1 extends React.Component {
     }
     this.handleClick = this.handleClick.bind(this); //强制把handleClick的this绑定在当前class的this之上
   }
-  componentWillMount(){
-    console.log('组件现在还没加载，但马上要加载了');
-  }
-  componentDidMount(){
-    console.log('组件已经加载完毕');
-  }
   handleClick(){
     this.setState({
       soldiers: [...this.state.soldiers, 'taotao']
@@ -42,7 +36,6 @@ class A1 extends React.Component {
     console.log(this.state.soldiers);
   }
   render() {
-    console.log('组件正在加载');
     return (
       <div>
         <ul>

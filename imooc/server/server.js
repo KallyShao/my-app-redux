@@ -2,7 +2,7 @@
  * @Author: Administrator
  * @Date:   2018-05-17 22:12:12
  * @Last Modified by:   Administrator
- * @Last Modified time: 2018-05-20 15:37:31
+ * @Last Modified time: 2018-05-21 22:00:10
  */
 
 const express = require('express');
@@ -58,7 +58,9 @@ app.get('/', function(req, res) { //访问根目录
 })
 
 app.get('/data', function(req, res) {
-    User.find({}, function(err, doc) {
+    User.findOne({
+        user: 'imooc'
+    }, function(err, doc) {
         res.json(doc);
     });
 // res.json({
