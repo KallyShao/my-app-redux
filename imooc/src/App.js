@@ -1,76 +1,51 @@
 /*
 * @Author: Administrator
-* @Date:   2018-05-22 22:19:00
+* @Date:   2018-05-27 22:45:56
 * @Last Modified by:   Administrator
-* @Last Modified time: 2018-05-22 22:58:05
+* @Last Modified time: 2018-05-31 21:53:55
 */
 
 import React from 'react';
+import { connect } from 'react-redux';
+import { addGun, removeGun, addGunAsync} from './index.redux.js';
+
+// const mapStatetoProps = (state) => {
+//   return {
+//     num: state  //把状态放入props中，即把属性加入props
+//   }
+// };
+// const actionCreator = { addGun, removeGun, addGunAsync};  //addGun这3个参数被放入props中，即把方法加入props
+
+// App = connect(mapStatetoProps, actionCreator)(App);  //connect是一个高阶组件
+// @connect(mapStatetoProps, actionCreator)  //装饰器的写法
+@connect(state => ({num :state}), { addGun, removeGun, addGunAsync})  //箭头函数的函数体用()包起来表示return，？？？
 
 
 class App extends React.Component {
+  // constructor(){
+  //   super();
+  //   this.state = {
+  //     soldiers: ['lily', 'lemon', 'sua']
+  //   }
+  // }
+
   render() {
+    const store = this.props.store;   
+    const num = this.props.num;
+
+    const addGun = this.props.addGun;
+    const removeGun = this.props.removeGun;
+    const addGunAsync = this.props.addGunAsync;
     return (
       <div>
-        <h2>独立团</h2>
-        <A1  name1 = 'kally'/>
-        <A2 />
-        <A3 name1 = 'kally112'/>
+        <h2>现在有机枪{num}把</h2>
+        <button onClick = {addGun}>申请武器</button>
+        <button onClick = {removeGun}>回收武器</button>
+        <button onClick = {addGunAsync}>拖2天再给</button>
       </div>
     )
   }
 }
 
-class A1 extends React.Component {
-  constructor(){
-    super();
-    this.state = {
-      soldiers: ['lily', 'lemon', 'sua']
-    }
-    this.handleClick = this.handleClick.bind(this); //强制把handleClick的this绑定在当前class的this之上
-  }
-  componentWillMount(){
-    console.log('组件现在还没加载，但马上要加载了');
-  }
-  componentDidMount(){
-    console.log('组件已经加载完毕');
-  }
-  handleClick(){
-    this.setState({
-      soldiers: [...this.state.soldiers, 'taotao']
-    })
-    console.log(this.state.soldiers);
-  }
-  render() {
-    console.log('组件正在加载');
-    return (
-      <div>
-        <ul>
-          {
-            this.state.soldiers.map((user, index) => {
-              return <li key = {index}>{user}</li>
-            })
-          }
-        </ul>
-        <button onClick = {this.handleClick}>新兵入伍</button>
-      </div>
-      )
-  }
-}
-class A2 extends React.Component {
-  constructor(){
-    super();
-    this.state = {
-      name2: 'xuxu' 
-    }
-  }
-  render() {
-    return <h2>A2</h2>
-  }
-}
-
-function A3(props){  //如果组件内只有rend()函数，则可以写成这样的无状态组件
-  return <h2>A3, {props.name1}</h2>
-}
 
 export default App;
