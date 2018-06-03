@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2018-05-27 22:45:56
 * @Last Modified by:   Administrator
-* @Last Modified time: 2018-05-31 21:53:55
+* @Last Modified time: 2018-06-03 23:22:32
 */
 
 import React from 'react';
@@ -18,7 +18,7 @@ import { addGun, removeGun, addGunAsync} from './index.redux.js';
 
 // App = connect(mapStatetoProps, actionCreator)(App);  //connect是一个高阶组件
 // @connect(mapStatetoProps, actionCreator)  //装饰器的写法
-@connect(state => ({num :state}), { addGun, removeGun, addGunAsync})  //箭头函数的函数体用()包起来表示return，？？？
+@connect(state => ({ num :state.counter }), { addGun, removeGun, addGunAsync})  //箭头函数的函数体用()包起来表示return，？？？
 
 
 class App extends React.Component {
