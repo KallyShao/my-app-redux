@@ -9,7 +9,7 @@ import Auth from './auth.js';
 import Dashboard from './dashboard.js';
 // import { counter } from './index.redux.js';
 import reducers from './reducer.js';
-
+import './config.js';
 
 const reduxDevtools = window.devToolsExtension ? window.devToolsExtension() : () => {};
 const store = createStore(reducers, compose(

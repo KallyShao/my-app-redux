@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2018-06-03 11:48:12
 * @Last Modified by:   Administrator
-* @Last Modified time: 2018-06-03 23:25:57
+* @Last Modified time: 2018-06-04 21:36:14
 */
 
 import React from 'react';
@@ -36,18 +36,18 @@ class Dashboard extends React.Component{
                 { this.props.isAuth ? <button onClick={ this.props.logout }>注销</button> : null }
                 <ul>
                     <li>
-                        <Link to='/dashboard/'>一营</Link>
+                        <Link to={ `${this.props.match.url}/` }>一营</Link>
                     </li>
                     <li>
-                        <Link to='/dashboard/erying'>二营</Link>
+                        <Link to={ `${this.props.match.url}/erying` }>二营</Link>
                     </li>
                     <li>
-                        <Link to='/dashboard/qibinglian'>骑兵连</Link>
+                        <Link to={ `${this.props.match.url}/qibinglian` }>骑兵连</Link>
                     </li>
                 </ul>
-                <Route exact path='/dashboard/' component={App}></Route>
-                <Route path='/dashboard/erying' component={Erying}></Route>
-                <Route path='/dashboard/qibinglian' component={Qibinglian}></Route>
+                <Route exact path={ `${this.props.match.url}/` } component={App}></Route>
+                <Route path={ `${this.props.match.url}/erying` } component={Erying}></Route>
+                <Route path={ `${this.props.match.url}/qibinglian` } component={Qibinglian}></Route>
             </div>
         );
         return this.props.isAuth ? app : redirectToLogin;
